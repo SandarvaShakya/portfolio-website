@@ -735,3 +735,23 @@ input:checked + .slider:before {
     margin-left: 1rem;
   }
 }
+
+@media (min-width: 720px) and (max-width: 1450px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-areas: "text-content img social";
+    place-items: center;
+  }
+
+  .heading {
+    white-space: normal;
+  }
+}
