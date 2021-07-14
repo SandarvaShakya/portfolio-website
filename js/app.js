@@ -21,9 +21,16 @@ function themeButton() {
 function sidebarToggle() {
   const hamburger = document.querySelector("#hamburger");
   const sidebar = document.querySelector(".sidebar");
+  const links = document.querySelectorAll(".nav__link");
 
   hamburger.addEventListener("click", function () {
     sidebar.classList.toggle("open");
+  });
+
+  links.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      sidebar.classList.remove("open");
+    });
   });
 }
 
@@ -67,6 +74,33 @@ function cardsCarousel() {
   });
 }
 
+//makes links active according to location
+function navActive() {
+  const sections = document.querySelectorAll(".section");
+  const icons = document.querySelectorAll(".nav__link i");
+
+  window.addEventListener("scroll", function (e) {
+    let currentSection = "";
+
+    sections.forEach(function (section) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    icons.forEach(function (icon) {
+      icon.classList.remove("active");
+      if (icon.dataset.icon === currentSection) {
+        icon.classList.add("active");
+      }
+    });
+    console.log(currentSection);
+  });
+}
+
 //calls all other functions after DOM content loads
 //also checks for any localstorage data and implements the theme
 window.addEventListener("DOMContentLoaded", function () {
@@ -81,6 +115,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   sidebarToggle();
+  navActive();
   themeButton();
   cardsCarousel();
 });
