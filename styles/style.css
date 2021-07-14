@@ -534,7 +534,7 @@ input:checked + .slider:before {
   line-height: 1.5; */
 }
 
-@media (min-width: 720px) {
+@media (min-width: 1080px) {
   /********************
     global styles
   ********************/
@@ -734,30 +734,5 @@ input:checked + .slider:before {
   .download i {
     font-size: 2rem;
     margin-left: 1rem;
-  }
-}
-
-@media (min-width: 720px) and (max-width: 1450px) {
-  .section {
-    padding: 2rem 0;
-  }
-
-  .container {
-    width: 90%;
-  }
-
-  .home-grid {
-    display: grid;
-    grid-template-areas: "text-content img social";
-    place-items: center;
-  }
-
-  .heading {
-    white-space: normal;
-  }
-
-  .profile-img {
-    width: 250px;
-    height: 250px;
   }
 }
