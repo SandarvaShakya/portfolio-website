@@ -97,7 +97,32 @@ function navActive() {
         icon.classList.add("active");
       }
     });
-    console.log(currentSection);
+  });
+}
+
+//makes heading animation according to active section
+function transformHeading() {
+  const sections = document.querySelectorAll(".section");
+  const heading = document.querySelectorAll(".section__heading");
+
+  window.addEventListener("scroll", function () {
+    let currentSection = "";
+
+    sections.forEach(function (section) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      if (pageYOffset >= sectionTop - sectionHeight / 2) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    heading.forEach(function (head) {
+      head.style.transform = `translateX(-100vw)`;
+      if (head.dataset.heading === currentSection) {
+        head.style.transform = `translateX(0%)`;
+      }
+    });
   });
 }
 
@@ -116,6 +141,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   sidebarToggle();
   navActive();
+  transformHeading();
   themeButton();
   cardsCarousel();
 });

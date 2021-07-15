@@ -427,6 +427,7 @@ input:checked + .slider:before {
 
 .section__heading {
   padding-left: 2rem;
+  transition: transform 0.5s linear;
 }
 
 .card-container {
@@ -527,11 +528,41 @@ input:checked + .slider:before {
 .download {
   margin-top: 2rem;
   font-size: 0.8rem;
+}
 
-  /* color: var(--clr-text);
-  padding: 0 1em;
-  font-size: 1.25rem;
-  line-height: 1.5; */
+/******************
+  footer styles 
+******************/
+
+.footer {
+  position: relative;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  z-index: 2;
+  padding: 5rem 0;
+  background-color: var(--clr-background);
+}
+
+.footer-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.footer__link {
+  color: var(--clr-text);
+  font-size: 1.2rem;
+}
+
+.copyright {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--clr-text);
+  font-size: 1.5rem;
 }
 
 @media (min-width: 1000px) {
