@@ -4,7 +4,7 @@
 
 <br>
 
-Responsive Portfolio Website Using Html, Css and JavaScript, With a beautiful user interface. It contains a Sidebar, Home, my works, about me and footer.
+Responsive Portfolio Website Using HTML, CSS and JavaScript, With a beautiful user interface. It contains a sidebar, home, my works, about me and footer.
 
 <br>
 
