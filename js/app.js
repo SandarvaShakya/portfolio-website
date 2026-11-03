@@ -34,43 +34,25 @@ function sidebarToggle() {
   });
 }
 
-// this function is for our works sliding
+// works are scrolled natively; the dots follow and jump to the scroll position
 function cardsCarousel() {
-  const slide = document.querySelectorAll(".circle");
-  const transform = document.querySelectorAll(".card");
+  const container = document.querySelector(".card-container");
+  const cards = container.querySelectorAll(".card");
+  const dots = document.querySelectorAll(".circle");
 
-  let index = 1;
-  let previousIndex = 1;
+  const setActive = (i) =>
+    dots.forEach((d) => d.classList.toggle("circle--active", d.dataset.index == i));
 
-  slide.forEach(function (circle) {
-    circle.addEventListener("click", function (e) {
-      slide.forEach(function (circle) {
-        if (circle.classList.contains("circle--active")) {
-          previousIndex = circle.dataset.index;
-        }
-        circle.classList.remove("circle--active");
-      });
+  dots.forEach((dot) =>
+    dot.addEventListener("click", () => {
+      container.scrollLeft = cards[dot.dataset.index].offsetLeft - cards[0].offsetLeft;
+    })
+  );
 
-      e.target.classList.add("circle--active");
-      index = e.target.dataset.index;
-
-      if (previousIndex <= index) {
-        transform.forEach(function (card) {
-          card.style.transform = `translateX(${-115 * index}%)`;
-        });
-      } else {
-        transform.forEach(function (card) {
-          console.log("nope");
-          if (index == 0) {
-            card.style.transform = `translateX(0%)`;
-          }
-          if (index == 1) {
-            card.style.transform = `translateX(0%)`;
-            card.style.transform = `translateX(-115%)`;
-          }
-        });
-      }
-    });
+  container.addEventListener("scroll", () => {
+    const max = container.scrollWidth - container.clientWidth;
+    // dots only cover scroll positions, so map progress onto them
+    setActive(Math.round((container.scrollLeft / max) * (dots.length - 1)));
   });
 }
 

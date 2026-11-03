@@ -676,6 +676,13 @@ input:checked + .slider:before {
     width: 100%;
     display: flex;
     margin-top: 5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* firefox */
+  }
+
+  .card-container::-webkit-scrollbar {
+    display: none;
   }
 
   .card {
@@ -710,7 +717,7 @@ input:checked + .slider:before {
   }
 
   .circle-container {
-    width: 80px;
+    width: 100px;
     margin-top: 5rem;
     display: flex;
     justify-content: space-between;
